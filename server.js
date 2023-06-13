@@ -3,10 +3,10 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
-const routes = require('./Main/controllers');
-const helpers = require('./Main/utils/helpers');
+const routes = require('./controllers');
+const helpers = require('./utils/helpers');
 
-const sequelize = require('./Main/config/connection');
+const sequelize = require('./config/connection');
 // Use package with Express.js framework and the express-session middleware to store session data in a Sequelize-backed databse
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
