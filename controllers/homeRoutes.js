@@ -54,7 +54,7 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
-// Get post by id
+// Get post by id for updating
 router.get('/update/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
@@ -81,7 +81,7 @@ router.get('/update/:id', async (req, res) => {
   }
 });
 
-// Use withAuth middleware to prevent access to route
+// Dashboard route accessible only to authenticated users
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
@@ -101,6 +101,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+// Login route
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -111,6 +112,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// Signup route
 router.get('/signup', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {

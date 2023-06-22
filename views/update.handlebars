@@ -1,23 +1,30 @@
 <h2 class="title is-4">Edit Post:</h2>
+<!-- Form for editing post -->
 <form class='form edit-form'>
     <div class='field'>
+        <!-- Label for the title field -->
         <label class='form-label label'>title</label>
         <div class='control'>
+            <!-- Input field for the title, with the initial value set to the current title -->
             <input id='edit-title' class='form-control input is-link' type='text' value="{{title}}" />
         </div>
     </div>
     <div class='field'>
+        <!-- Label for the content field -->
         <label class='form-label label'>content</label>
         <div class='control'>
+            <!-- Textarea field for the content, with the initial value set to the current description -->
             <textarea id='edit-description' class='textarea is-link' rows="10">{{description}}</textarea>
         </div>
     </div>
     <div class="control">
         <div class='buttons is-right'>
+            <!-- Button to save the changes made to the post -->
             <button id='update-btn' type="click" class="button is-link is-rounded is-outlined" data-id={{id}}>Save
                 Changes</button>
         </div>
     </div>
 </form>
 
+<!-- Script file for handling the update functionality -->
 <script src='/js/update.js'></script>

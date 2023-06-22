@@ -1,26 +1,32 @@
 <div class="card">
     <header class="card-header">
         <p class="card-header-title">
+            <!-- Display the post title -->
             {{title}}
         </p>
     </header>
     <div class="card-content">
         <div class="content">
-            <h4>Posted by {{user.username}} on {{format_date
-                date_created}}</h4>
+            <!-- Display the username of the post creator and the formatted date of creation -->
+            <h4>Posted by {{user.username}} on {{format_date date_created}}</h4>
+            <!-- Display the post description/content -->
             {{description}}
         </div>
         <footer class="card-footer">
             <div class="content">
+                <!-- Display comments for the post -->
                 <h4>Comments:</h4>
                 {{#each comments as |comment|}}
+                <!-- Display the username and formatted date of each comment -->
                 <h5>on {{format_date comment.date_created}} {{user.username}} said ...</h5>
+                <!-- Display the comment content -->
                 <p>{{comment.feedback}}</p>
                 {{/each}}
             </div>
         </footer>
     </div>
 
+    <!-- Display the feedback form if the user is logged in -->
     {{#if logged_in}}
     <div class="card-content">
         <div class="content">
@@ -28,12 +34,14 @@
                 <div class="field">
                     <label class="label">Leave your feedback...</label>
                     <div class="control">
+                        <!-- Input field for user's feedback -->
                         <textarea id='comment' name='feedback' class="textarea is-link"
                             placeholder="provide ur feedback here"></textarea>
                     </div>
                 </div>
                 <div class="control">
                     <div class='buttons is-right'>
+                        <!-- Button to submit the feedback form -->
                         <button type="submit" class="button is-link is-rounded is-outlined">Submit</button>
                     </div>
                 </div>
@@ -43,4 +51,5 @@
     {{/if}}
 </div>
 
+<!-- Script file for handling comment functionality -->
 <script src='/js/comment.js'></script>

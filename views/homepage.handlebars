@@ -1,8 +1,9 @@
-<!-- Loop over each object in the projects array -->
+<!-- Loop over each object in the posts array -->
 {{#each posts as |post|}}
 <div class="card">
   <header class="card-header">
     <p class="card-header-title">
+      <!-- Display the post title with a link to the post's page -->
       <a href="/post/{{post.id}}">
         {{post.title}}
       </a>
@@ -10,10 +11,12 @@
   </header>
   <div class="card-content">
     <div class="content">
-      <h4>Posted by {{user.username}} on {{format_date
-        date_created}}</h4>
+      <!-- Display the username of the post creator and the formatted date of creation -->
+      <h4>Posted by {{user.username}} on {{format_date date_created}}</h4>
+      <!-- Display the post description/content -->
       {{post.description}}
     </div>
   </div>
 </div>
 {{/each}}
+<!-- End of post loop -->

@@ -28,6 +28,7 @@ const postFormHandler = async (event) => {
   }
 };
 
+// Function to handle the delete action for a post
 const deleteHandler = async (event) => {
   event.preventDefault();
   const post_id = event.target.getAttribute('data-id');
@@ -47,23 +48,26 @@ const deleteHandler = async (event) => {
   }
 };
 
+// Function to handle the update action for a post
 const updateHandler = async (event) => {
   event.preventDefault();
   const post_id = event.target.getAttribute('data-id');
   document.location.replace(`/update/${post_id}`);
 };
 
+// Attach event listeners to update buttons
 const updateButtons = document.querySelectorAll('.update-btn');
 updateButtons.forEach((button) => {
   button.addEventListener('click', updateHandler);
 });
 
-// Attach event listener to each delete buttons
+// Attach event listeners to delete buttons
 const deleteButtons = document.querySelectorAll('.delete-btn');
 deleteButtons.forEach((button) => {
   button.addEventListener('click', deleteHandler);
 });
 
+// Attach event listener to the post form submit event
 document
   .querySelector('.post-form')
   .addEventListener('submit', postFormHandler);

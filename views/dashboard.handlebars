@@ -1,41 +1,51 @@
 <h1 class="title">Welcome back, {{username}}!</h1>
 <h2 class="title is-4">Your Posts:</h2>
+<!-- Check if there are any posts -->
 {{#if posts.length}}
+<!-- Loop through each post -->
 {{#each posts as |post|}}
 <div class="card">
     <header class="card-header">
         <p class="card-header-title">
+            <!-- Display post title with a link to the post's page -->
             <a href="/post/{{id}}">{{format_date date_created}} - {{title}}</a>
         </p>
         <div class="buttons is-right">
+            <!-- Button to edit the post -->
             <button type='click' data-id={{id}} class="is-rounded button is-outlined is-dark update-btn">edit</button>
+            <!-- Button to delete the post -->
             <button type='click' data-id={{id}} class="button is-danger delete delete-btn"></button>
         </div>
     </header>
 </div>
 {{/each}}
-
+<!-- End of post loop -->
 {{/if}}
+<!-- End of post condition -->
 <br>
 <h2 class="title is-4">Create a New Post:</h2>
 <form class='form post-form'>
     <div class='field'>
         <label class='form-label label'>title</label>
         <div class='control'>
+            <!-- Input field for the post title -->
             <input id='post-title' class='form-control input is-link' type='text' />
         </div>
     </div>
     <div class='field'>
         <label class='form-label label'>content</label>
         <div class='control'>
+            <!-- Textarea for the post content -->
             <textarea id='post-description' class='textarea is-link' rows="10"></textarea>
         </div>
     </div>
     <div class="control">
+        <!-- Button to submit the new post form -->
         <div class='buttons is-right'>
             <button type="submit" class="button is-link is-rounded is-outlined">Add Post</button>
         </div>
     </div>
 </form>
 
+<!-- Script file for handling dashboard functionality -->
 <script src='/js/dashboard.js'></script>

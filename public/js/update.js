@@ -6,7 +6,7 @@ const updateFormHandler = async (event) => {
   const title = document.querySelector('#edit-title').value.trim();
   const description = document.querySelector('#edit-description').value.trim();
 
-  // Send a POST request to create a new post
+  // Send a POST request to update the post
   if (title && description) {
     try {
       const response = await fetch(`/api/post/${post_id}`, {
@@ -16,7 +16,7 @@ const updateFormHandler = async (event) => {
       });
       console.log(response);
       if (response.ok) {
-        // Reload the page to display the new post
+        // Reload the page to display the updated post
         document.location.replace(`/post/${post_id}`);
       } else {
         // Display an error message if the request was not successful

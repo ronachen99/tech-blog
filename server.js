@@ -5,8 +5,8 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-
 const sequelize = require('./config/connection');
+
 // Use package with Express.js framework and the express-session middleware to store session data in a Sequelize-backed databse
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
@@ -43,6 +43,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Add the defined routes to the application
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {

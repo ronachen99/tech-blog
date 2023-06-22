@@ -15,6 +15,7 @@
       <nav class="navbar">
         <div class="container">
           <div class="navbar-brand">
+            <!-- Hamburger icon for mobile -->
             <span class="navbar-burger" data-target="navbarMenuHeroA">
               <span></span>
               <span></span>
@@ -23,12 +24,15 @@
           </div>
           <div id="navbarMenuHeroA" class="navbar-menu">
             <div class="navbar-end">
+              <!-- Navigation links -->
               <a class='navbar-item' href='/'>HOME</a>
               <a class='navbar-item' href='/dashboard'>DASHBOARD</a>
+              <!-- Display LOGOUT button if user is logged in -->
               {{#if logged_in}}
               <div class='navbar-item'>
                 <button class='is-link is-outlined button is-rounded' id='logout'>LOGOUT</button>
               </div>
+              <!-- Display LOGIN link if user is not logged in -->
               {{else}}
               <a class='navbar-item' href='/login'>LOGIN</a>
               {{/if}}
