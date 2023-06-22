@@ -5,8 +5,7 @@ const withAuth = require('../../utils/auth');
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
-      title: req.body.title,
-      description: req.body.description,
+      ...req.body,
       user_id: req.session.user_id
     });
 
@@ -25,17 +24,19 @@ router.put('/:id', withAuth, async (req, res) => {
       },
       {
         where: {
-          id: req.params.id
+          id: req.params.id,
+          user_id: req.session.user_id
         }
       }
     );
 
-    if (!postData[0]) {
+    if (postData[0] === 0) {
+      // No post found with the provided ID or the user doesn't have permission
       res.status(404).json({ message: 'No post found with this id!' });
       return;
     }
 
-    res.status(200).json(postData);
+    res.status(200).json({ message: 'Post updated successfully!' });
   } catch (err) {
     res.status(500).json(err);
   }
