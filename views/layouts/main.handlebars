@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Blog</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+
+<body>
+  <section class="hero is-dark is-medium">
+    <!-- Hero head: will stick at the top -->
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-brand">
+            <span class="navbar-burger" data-target="navbarMenuHeroA">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <div id="navbarMenuHeroA" class="navbar-menu">
+            <div class="navbar-end">
+              <a class='navbar-item' href='/'>HOME</a>
+              <a class='navbar-item' href='/dashboard'>DASHBOARD</a>
+              {{#if logged_in}}
+              <div class='navbar-item'>
+                <button class='is-link is-outlined button is-rounded' id='logout'>LOGOUT</button>
+              </div>
+              {{else}}
+              <a class='navbar-item' href='/login'>LOGIN</a>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <p class="title">
+          Tech Blog
+        </p>
+        <p class="subtitle">
+          start your journey
+        </p>
+      </div>
+    </div>
+  </section>
+  </header>
+  <main class="container">
+    <!-- Render the sub layout -->
+    {{{ body }}}
+  </main>
+  <script src='/js/navbar.js'></script>
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
+
+</html>

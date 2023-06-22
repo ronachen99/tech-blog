@@ -1,0 +1,44 @@
+<h1 class="title">Welcome back, {{username}}!</h1>
+<h2 class="title is-4">Your Posts:</h2>
+<div class="post-list">
+    {{#if posts.length}}
+    {{#each posts as |post|}}
+    <div class="card">
+        <header class="card-header">
+            <p class="card-header-title">
+                <a href="/post/{{id}}"> {{format_date
+                    date_created}} - {{title}}
+                </a>
+            </p>
+            <div class="buttons is-right">
+                <button data-id="{{id}}" class="button is-danger delete"></button>
+            </div>
+        </header>
+    </div>
+    {{/each}}
+    {{/if}}
+</div>
+<br>
+<h2 class="title is-4">Create a New Post:</h2>
+
+<form class='form post-form' metho="post">
+    <div class='field'>
+        <label class='form-label label'>title</label>
+        <div class='control'>
+            <input id='post-title' class='form-control input is-link' type='text' />
+        </div>
+    </div>
+    <div class='field'>
+        <label class='form-label label'>content</label>
+        <div class='control'>
+            <textarea id='post-description' class='textarea is-link' rows="10"></textarea>
+        </div>
+    </div>
+    <div class="control">
+        <div class='buttons is-right'>
+            <button type="submit" class="button is-link is-rounded is-outlined">Add Post</button>
+        </div>
+    </div>
+</form>
+
+<script src='/js/dashboard.js'></script>

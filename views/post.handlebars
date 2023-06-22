@@ -1,0 +1,46 @@
+<div class="card">
+    <header class="card-header">
+        <p class="card-header-title">
+            {{title}}
+        </p>
+    </header>
+    <div class="card-content">
+        <div class="content">
+            <h4>Posted by {{user.username}} on {{format_date
+                date_created}}</h4>
+            {{description}}
+        </div>
+        <footer class="card-footer">
+            <div class="content">
+                <h4>Comments:</h4>
+                {{#each comments as |comment|}}
+                <h5>on {{format_date comment.date_created}} {{user.username}} said ...</h5>
+                <p>{{comment.feedback}}</p>
+                {{/each}}
+            </div>
+        </footer>
+    </div>
+
+    {{#if logged_in}}
+    <div class="card-content">
+        <div class="content">
+            <form class="feedback-form" data-id={{id}}>
+                <div class="field">
+                    <label class="label">Leave your feedback...</label>
+                    <div class="control">
+                        <textarea id='comment' name='feedback' class="textarea is-link"
+                            placeholder="provide ur feedback here"></textarea>
+                    </div>
+                </div>
+                <div class="control">
+                    <div class='buttons is-right'>
+                        <button type="submit" class="button is-link is-rounded is-outlined">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {{/if}}
+</div>
+
+<script src='/js/comment.js'></script>
