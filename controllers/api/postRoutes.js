@@ -17,21 +17,14 @@ router.post('/', withAuth, async (req, res) => {
 
 router.put('/:id', withAuth, async (req, res) => {
   try {
-    const postData = await Post.update(
-      {
-        title: req.body.title,
-        description: req.body.description
-      },
-      {
-        where: {
-          id: req.params.id,
-          user_id: req.session.user_id
-        }
+    const postData = await Post.update(req.body, {
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id
       }
-    );
+    });
 
-    if (postData[0] === 0) {
-      // No post found with the provided ID or the user doesn't have permission
+    if (!postData) {
       res.status(404).json({ message: 'No post found with this id!' });
       return;
     }

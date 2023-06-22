@@ -29,27 +29,41 @@ const postFormHandler = async (event) => {
 };
 
 const deleteHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const post_id = event.target.getAttribute('data-id');
-    try {
-      const response = await fetch(`/api/post/${post_id}`, {
-        method: 'DELETE'
-      });
-      if (response.ok) {
-        // Reload the page to display the updated post list
-        document.location.reload();
-      } else {
-        // Display an error message if the request was not successful
-        console.error('Failed to delete post:', response.statusText);
-      }
-    } catch (err) {
-      console.error('Error deleting post:', err);
+  event.preventDefault();
+  const post_id = event.target.getAttribute('data-id');
+  try {
+    const response = await fetch(`/api/post/${post_id}`, {
+      method: 'DELETE'
+    });
+    if (response.ok) {
+      // Reload the page to display the updated post list
+      document.location.reload();
+    } else {
+      // Display an error message if the request was not successful
+      console.error('Failed to delete post:', response.statusText);
     }
+  } catch (err) {
+    console.error('Error deleting post:', err);
   }
 };
+
+const updateHandler = async (event) => {
+  event.preventDefault();
+  const post_id = event.target.getAttribute('data-id');
+  document.location.replace(`/update/${post_id}`);
+};
+
+const updateButtons = document.querySelectorAll('.update-btn');
+updateButtons.forEach((button) => {
+  button.addEventListener('click', updateHandler);
+});
+
+// Attach event listener to each delete buttons
+const deleteButtons = document.querySelectorAll('.delete-btn');
+deleteButtons.forEach((button) => {
+  button.addEventListener('click', deleteHandler);
+});
 
 document
   .querySelector('.post-form')
   .addEventListener('submit', postFormHandler);
-
-document.querySelector('.post-list').addEventListener('click', deleteHandler);

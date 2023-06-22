@@ -1,27 +1,24 @@
 <h1 class="title">Welcome back, {{username}}!</h1>
 <h2 class="title is-4">Your Posts:</h2>
-<div class="post-list">
-    {{#if posts.length}}
-    {{#each posts as |post|}}
-    <div class="card">
-        <header class="card-header">
-            <p class="card-header-title">
-                <a href="/post/{{id}}"> {{format_date
-                    date_created}} - {{title}}
-                </a>
-            </p>
-            <div class="buttons is-right">
-                <button data-id="{{id}}" class="button is-danger delete"></button>
-            </div>
-        </header>
-    </div>
-    {{/each}}
-    {{/if}}
+{{#if posts.length}}
+{{#each posts as |post|}}
+<div class="card">
+    <header class="card-header">
+        <p class="card-header-title">
+            <a href="/post/{{id}}">{{format_date date_created}} - {{title}}</a>
+        </p>
+        <div class="buttons is-right">
+            <button type='click' data-id={{id}} class="is-rounded button is-outlined is-dark update-btn">edit</button>
+            <button type='click' data-id={{id}} class="button is-danger delete delete-btn"></button>
+        </div>
+    </header>
 </div>
+{{/each}}
+
+{{/if}}
 <br>
 <h2 class="title is-4">Create a New Post:</h2>
-
-<form class='form post-form' metho="post">
+<form class='form post-form'>
     <div class='field'>
         <label class='form-label label'>title</label>
         <div class='control'>

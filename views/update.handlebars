@@ -1,0 +1,23 @@
+<h2 class="title is-4">Edit Post:</h2>
+<form class='form edit-form'>
+    <div class='field'>
+        <label class='form-label label'>title</label>
+        <div class='control'>
+            <input id='edit-title' class='form-control input is-link' type='text' value="{{title}}" />
+        </div>
+    </div>
+    <div class='field'>
+        <label class='form-label label'>content</label>
+        <div class='control'>
+            <textarea id='edit-description' class='textarea is-link' rows="10">{{description}}</textarea>
+        </div>
+    </div>
+    <div class="control">
+        <div class='buttons is-right'>
+            <button id='update-btn' type="click" class="button is-link is-rounded is-outlined" data-id={{id}}>Save
+                Changes</button>
+        </div>
+    </div>
+</form>
+
+<script src='/js/update.js'></script>
