@@ -1,4 +1,4 @@
-# Personal Finance Tracker: Cash Cow
+# Tech Blog
 
 ![MIT License](https://img.shields.io/badge/license-MIT%20License-black.svg)
 
